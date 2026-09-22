@@ -1,0 +1,54 @@
+id: hr.dismissal-guide
+title: Путеводитель по кадровым вопросам. Увольнение (ООО «ЮрСпектр»)
+content_type: assembled_document
+owner: hr-policy-owner
+approver: legal-owner
+lifecycle: effective
+valid_from: "2026-09-01"
+
+sections:
+  - heading: О документе
+    body: >
+      Путеводитель по кадровым вопросам «Увольнение» (ООО «ЮрСпектр»),
+      актуально на 01.09.2026. Ниже — полный текст документа. Фрагменты
+      с синей полосой слева — общие нормативные блоки: они редактируются
+      отдельно в CMS и при пересборке подставляются во все места документа.
+
+  - heading: Сквозные требования при оформлении увольнения
+    body: >
+      Эти требования повторяются при большинстве оснований увольнения.
+      Изменение блока в CMS обновляет соответствующие места документа
+      после `npm run build`.
+
+  - heading: День увольнения
+    block_ref: reg.dismissal.day-not-on-leave
+
+  - heading: Полный расчет
+    block_ref: reg.dismissal.final-settlement
+
+  - heading: Трудовая книжка
+    block_ref: reg.dismissal.workbook-issue
+
+  - heading: Формулировка причины увольнения
+    block_ref: reg.dismissal.workbook-wording
+
+  - heading: Личное дело
+    block_ref: reg.dismissal.personal-file-order
+
+  - heading: Личная карточка
+    block_ref: reg.dismissal.personal-card
+
+  - heading: Воинский учет
+    block_ref: reg.dismissal.military-notice
+
+  - heading: Ответственность за задержку расчета
+    block_ref: reg.dismissal.settlement-delay
+
+  - heading: Уведомление профсоюза
+    block_ref: reg.dismissal.union-notice
+
+  - heading: Письменные объяснения
+    block_ref: reg.dismissal.written-explanation
+
+  - heading: Полный текст путеводителя
+    file_ref: content/sources/dismissal/full.md

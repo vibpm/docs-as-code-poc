@@ -1,0 +1,31 @@
+# Colleague demo: portal + Decap CMS + auto-rebuild after edits.
+# Protects the whole site with HTTP Basic Auth.
+#
+# Usage:
+#   set SITE_URL=https://your-host.example
+#   docker compose -f compose.demo.yaml up --build -d
+#
+# Default login: demo / demo2026  (override DEMO_USER / DEMO_PASSWORD)
+
+services:
+  demo:
+    build:
+      context: .
+      dockerfile: deploy/demo/Dockerfile.demo
+      args:
+        DEMO_USER: ${DEMO_USER:-demo}
+        DEMO_PASSWORD: ${DEMO_PASSWORD:-demo2026}
+    image: docs-as-code-demo:${IMAGE_TAG:-latest}
+    ports:
+      - "${HTTP_PORT:-8080}:8080"
+    environment:
+      SITE_URL: ${SITE_URL:-http://localhost:8080}
+      CONTENT_AS_OF: ${CONTENT_AS_OF:-2026-09-22}
+      CONTENT_BRANCH: ${CONTENT_BRANCH:-master}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 90s

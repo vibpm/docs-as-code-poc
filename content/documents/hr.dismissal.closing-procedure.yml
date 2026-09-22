@@ -1,0 +1,45 @@
+id: hr.dismissal.closing-procedure
+title: Общая процедура оформления увольнения (сквозные требования)
+content_type: assembled_document
+owner: hr-policy-owner
+approver: legal-owner
+lifecycle: effective
+valid_from: "2026-09-01"
+
+sections:
+  - heading: Назначение
+    body: >
+      Документ собирает нормативные требования, которые повторяются
+      при оформлении увольнения по большинству оснований: расчет,
+      трудовая книжка, личное дело, воинский учет и ограничения
+      по дню увольнения.
+
+  - heading: День увольнения
+    block_ref: reg.dismissal.day-not-on-leave
+
+  - heading: Полный расчет
+    block_ref: reg.dismissal.final-settlement
+
+  - heading: Трудовая книжка
+    block_ref: reg.dismissal.workbook-issue
+
+  - heading: Формулировка причины увольнения
+    block_ref: reg.dismissal.workbook-wording
+
+  - heading: Личное дело
+    block_ref: reg.dismissal.personal-file-order
+
+  - heading: Личная карточка
+    block_ref: reg.dismissal.personal-card
+
+  - heading: Воинский учет
+    block_ref: reg.dismissal.military-notice
+
+  - heading: Ответственность за задержку
+    block_ref: reg.dismissal.settlement-delay
+
+  - heading: Уведомление профсоюза (где применимо)
+    block_ref: reg.dismissal.union-notice
+
+  - heading: Письменные объяснения (дисциплинарные случаи)
+    block_ref: reg.dismissal.written-explanation

@@ -1,20 +1,13 @@
+# Local PoC: no GitLab OAuth.
+# Run alongside the site: npm run cms
+# For GitLab later, replace with backend.name: gitlab + OAuth app_id.
 backend:
-  name: gitlab
+  name: proxy
+  proxy_url: http://localhost:8081/api/v1
+  branch: master
 
-  # Replace during deployment:
-  repo: CLIENT_GROUP/docs-as-code-poc
-  branch: main
-
-  # Self-hosted GitLab:
-  api_root: https://gitlab.example.com/api/v4
-  base_url: https://gitlab.example.com
-  auth_endpoint: oauth/authorize
-
-  # Public OAuth Application ID.
-  # Do NOT put OAuth client secret here.
-  app_id: REPLACE_WITH_GITLAB_OAUTH_APPLICATION_ID
-
-publish_mode: editorial_workflow
+# editorial_workflow is not supported with local proxy
+# publish_mode: editorial_workflow
 
 media_folder: static/uploads
 public_folder: /uploads

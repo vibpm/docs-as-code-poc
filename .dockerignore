@@ -1,0 +1,11 @@
+node_modules
+build
+.docusaurus
+.git
+vendor/FPF
+.tmp
+*.log
+.env
+.env.*
+!.env.example
+!.env.demo.example

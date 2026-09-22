@@ -69,11 +69,12 @@ for (const file of fs.readdirSync('content/documents')) {
   let output = `---
 id: ${doc.id}
 title: "${doc.title}"
+format: md
 ---
 
 # ${doc.title}
 
-<div className="effective-notice">
+<div class="effective-notice">
 
 **Состояние контента на:** ${asOf.toISOString().substring(0,10)}
 
@@ -83,39 +84,79 @@ title: "${doc.title}"
 
   const provenance = [];
 
+  function escapeForMarkdown(text) {
+    return String(text)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\{/g, '&#123;')
+      .replace(/\}/g, '&#125;');
+  }
+
+  function renderSharedBlock(seriesId) {
+    const block = blocks.get(seriesId);
+
+    if (!block) {
+      throw new Error(
+        `No effective block for ${seriesId} used by ${doc.id}`
+      );
+    }
+
+    provenance.push(block.metadata.id);
+
+    return (
+      `<div class="shared-block">\n\n` +
+      escapeForMarkdown(block.body) +
+      `\n\n</div>\n\n`
+    );
+  }
+
+  function expandBlockMarkers(text) {
+    return String(text)
+      .split(/(\{\{block:[a-z0-9._-]+\}\})/g)
+      .map((part) => {
+        const match = part.match(/^\{\{block:([a-z0-9._-]+)\}\}$/);
+        if (match) {
+          return renderSharedBlock(match[1]);
+        }
+        return escapeForMarkdown(part);
+      })
+      .join('');
+  }
+
   for (const section of doc.sections || []) {
+
+    if (section.file_ref) {
+      const fullPath = path.resolve(section.file_ref);
+      if (!fullPath.startsWith(path.resolve('content'))) {
+        throw new Error(
+          `file_ref must stay under content/: ${section.file_ref}`
+        );
+      }
+
+      const fileText = fs.readFileSync(fullPath, 'utf8').trim();
+      output += expandBlockMarkers(fileText);
+      output += '\n\n';
+      continue;
+    }
 
     output += `## ${section.heading}\n\n`;
 
     if (section.body) {
-      output += `${section.body}\n\n`;
+      output += `${expandBlockMarkers(section.body)}\n\n`;
     }
 
     if (section.block_ref) {
-
-      const block = blocks.get(section.block_ref);
-
-      if (!block) {
-        throw new Error(
-          `No effective block for ${section.block_ref} ` +
-          `used by ${doc.id}`
-        );
-      }
-
-      provenance.push(block.metadata.id);
-
-      output += `<div className="shared-block">\n\n`;
-      output += block.body;
-      output += `\n\n</div>\n\n`;
+      output += renderSharedBlock(section.block_ref);
     }
   }
 
   output += `
-<div className="provenance">
+<div class="provenance">
 
 **Document ID:** ${doc.id}
 
-**Shared content:** ${provenance.join(', ') || 'none'}
+**Shared content:** ${[...new Set(provenance)].join(', ') || 'none'}
 
 **Build commit:** ${process.env.CI_COMMIT_SHA || 'local'}
 
@@ -123,7 +164,7 @@ title: "${doc.title}"
 `;
 
   fs.writeFileSync(
-    `generated/docs/${doc.id}.mdx`,
+    `generated/docs/${doc.id}.md`,
     output
   );
 
@@ -141,11 +182,12 @@ let index = `---
 id: index
 slug: /
 title: Regulatory Content Platform
+format: md
 ---
 
 # Regulatory Content Platform
 
-<div className="effective-notice">
+<div class="effective-notice">
 
 **Состояние контента на:** ${asOfLabel}
 
@@ -159,7 +201,7 @@ for (const item of catalog) {
   index += `- [${item.title}](/${item.id})\n`;
 }
 
-fs.writeFileSync('generated/docs/index.mdx', index);
+fs.writeFileSync('generated/docs/index.md', index);
 
 console.log(
   `Documents assembled for ${asOfLabel}`

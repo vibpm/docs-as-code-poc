@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 import yaml from 'js-yaml';
 
 fs.mkdirSync('generated', { recursive: true });
@@ -7,6 +8,28 @@ const graph = {
   blocks: {},
   documents: {}
 };
+
+function link(docId, seriesId) {
+  if (!seriesId) return;
+
+  if (!graph.documents[docId].blocks.includes(seriesId)) {
+    graph.documents[docId].blocks.push(seriesId);
+  }
+
+  graph.blocks[seriesId] ??= { usedBy: [] };
+
+  if (!graph.blocks[seriesId].usedBy.includes(docId)) {
+    graph.blocks[seriesId].usedBy.push(docId);
+  }
+}
+
+function collectMarkers(text, docId) {
+  const re = /\{\{block:([a-z0-9._-]+)\}\}/g;
+  let match;
+  while ((match = re.exec(text)) !== null) {
+    link(docId, match[1]);
+  }
+}
 
 for (const file of fs.readdirSync('content/documents')) {
 
@@ -23,15 +46,26 @@ for (const file of fs.readdirSync('content/documents')) {
 
   for (const section of doc.sections || []) {
 
-    if (!section.block_ref) continue;
+    if (section.block_ref) {
+      link(doc.id, section.block_ref);
+    }
 
-    graph.documents[doc.id].blocks.push(section.block_ref);
+    if (section.body) {
+      collectMarkers(section.body, doc.id);
+    }
 
-    graph.blocks[section.block_ref] ??= {
-      usedBy: []
-    };
-
-    graph.blocks[section.block_ref].usedBy.push(doc.id);
+    if (section.file_ref) {
+      const fullPath = path.resolve(section.file_ref);
+      if (!fullPath.startsWith(path.resolve('content'))) {
+        throw new Error(
+          `file_ref must stay under content/: ${section.file_ref}`
+        );
+      }
+      collectMarkers(
+        fs.readFileSync(fullPath, 'utf8'),
+        doc.id
+      );
+    }
   }
 }
 

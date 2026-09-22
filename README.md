@@ -93,3 +93,21 @@ Output:
 See:
 
     GITLAB_SETUP.md
+
+## Colleague demo
+
+Editable demo stack (Basic Auth + CMS + auto-rebuild):
+
+    DEMO.md
+    compose.demo.yaml
+
+## FPF (First Principles Framework)
+
+Connected corpus: [ailev/FPF](https://github.com/ailev/FPF) → local `vendor/FPF/` (clone or junction).
+
+Project working publications for the Dismissal Guide:
+
+- CuePack (`A.16.1`): `fpf/cuepacks/hr.dismissal-guide.pre-articulation.cuepack.md`
+- ProblemCard Thin (`C.22.2`): `fpf/problem-cards/hr.dismissal-ssot.problem-card.md`
+
+How to use: `fpf/README.md` and `vendor/FPF/USING-FPF.md`.

@@ -1,18 +1,35 @@
 topics:
-  - id: expenses
-    title: Расходы
-
-  - id: approvals
-    title: Согласование
-
-  - id: accounting
-    title: Бухгалтерский учет
-
-  - id: retention
-    title: Хранение
-
-  - id: privacy
-    title: Персональные данные
-
-  - id: controls
-    title: Контроли
+  - id: dismissal
+    title: Увольнение
+  - id: procedure
+    title: Кадровая процедура
+  - id: workbook
+    title: Трудовая книжка
+  - id: settlement
+    title: Расчет при увольнении
+  - id: personal-file
+    title: Личное дело
+  - id: military-registration
+    title: Воинский учет
+  - id: employer-initiative
+    title: Инициатива нанимателя
+  - id: employee-initiative
+    title: Инициатива работника
+  - id: agreement
+    title: Соглашение сторон
+  - id: fixed-term
+    title: Срочный трудовой договор
+  - id: independent-grounds
+    title: Обстоятельства, не зависящие от воли сторон
+  - id: special-grounds
+    title: Дополнительные основания
+  - id: union
+    title: Профсоюз
+  - id: discipline
+    title: Дисциплинарная ответственность
+  - id: payroll
+    title: Оплата труда
+  - id: liability
+    title: Ответственность нанимателя
+  - id: restrictions
+    title: Ограничения при увольнении

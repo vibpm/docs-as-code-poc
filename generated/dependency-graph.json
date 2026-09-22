@@ -1,50 +1,95 @@
 {
   "blocks": {
-    "reg.approval-threshold": {
+    "reg.dismissal.day-not-on-leave": {
       "usedBy": [
-        "accounting.invoice-procedure",
-        "finance.expense-policy"
+        "hr.dismissal-guide",
+        "hr.dismissal.closing-procedure"
       ]
     },
-    "reg.invoice-retention": {
+    "reg.dismissal.final-settlement": {
       "usedBy": [
-        "accounting.invoice-procedure",
-        "legal.records-policy"
+        "hr.dismissal-guide",
+        "hr.dismissal.closing-procedure"
       ]
     },
-    "reg.segregation-of-duties": {
+    "reg.dismissal.workbook-issue": {
       "usedBy": [
-        "accounting.invoice-procedure",
-        "finance.expense-policy"
+        "hr.dismissal-guide",
+        "hr.dismissal.closing-procedure"
       ]
     },
-    "reg.personal-data-retention": {
+    "reg.dismissal.workbook-wording": {
       "usedBy": [
-        "legal.records-policy"
+        "hr.dismissal-guide",
+        "hr.dismissal.closing-procedure"
+      ]
+    },
+    "reg.dismissal.personal-file-order": {
+      "usedBy": [
+        "hr.dismissal-guide",
+        "hr.dismissal.closing-procedure"
+      ]
+    },
+    "reg.dismissal.personal-card": {
+      "usedBy": [
+        "hr.dismissal-guide",
+        "hr.dismissal.closing-procedure"
+      ]
+    },
+    "reg.dismissal.military-notice": {
+      "usedBy": [
+        "hr.dismissal-guide",
+        "hr.dismissal.closing-procedure"
+      ]
+    },
+    "reg.dismissal.settlement-delay": {
+      "usedBy": [
+        "hr.dismissal-guide",
+        "hr.dismissal.closing-procedure"
+      ]
+    },
+    "reg.dismissal.union-notice": {
+      "usedBy": [
+        "hr.dismissal-guide",
+        "hr.dismissal.closing-procedure"
+      ]
+    },
+    "reg.dismissal.written-explanation": {
+      "usedBy": [
+        "hr.dismissal-guide",
+        "hr.dismissal.closing-procedure"
       ]
     }
   },
   "documents": {
-    "accounting.invoice-procedure": {
-      "title": "Процедура обработки входящих счетов",
+    "hr.dismissal-guide": {
+      "title": "Путеводитель по кадровым вопросам. Увольнение (ООО «ЮрСпектр»)",
       "blocks": [
-        "reg.approval-threshold",
-        "reg.invoice-retention",
-        "reg.segregation-of-duties"
+        "reg.dismissal.day-not-on-leave",
+        "reg.dismissal.final-settlement",
+        "reg.dismissal.workbook-issue",
+        "reg.dismissal.workbook-wording",
+        "reg.dismissal.personal-file-order",
+        "reg.dismissal.personal-card",
+        "reg.dismissal.military-notice",
+        "reg.dismissal.settlement-delay",
+        "reg.dismissal.union-notice",
+        "reg.dismissal.written-explanation"
       ]
     },
-    "finance.expense-policy": {
-      "title": "Политика учета и согласования расходов",
+    "hr.dismissal.closing-procedure": {
+      "title": "Общая процедура оформления увольнения (сквозные требования)",
       "blocks": [
-        "reg.approval-threshold",
-        "reg.segregation-of-duties"
-      ]
-    },
-    "legal.records-policy": {
-      "title": "Политика хранения документов",
-      "blocks": [
-        "reg.invoice-retention",
-        "reg.personal-data-retention"
+        "reg.dismissal.day-not-on-leave",
+        "reg.dismissal.final-settlement",
+        "reg.dismissal.workbook-issue",
+        "reg.dismissal.workbook-wording",
+        "reg.dismissal.personal-file-order",
+        "reg.dismissal.personal-card",
+        "reg.dismissal.military-notice",
+        "reg.dismissal.settlement-delay",
+        "reg.dismissal.union-notice",
+        "reg.dismissal.written-explanation"
       ]
     }
   }

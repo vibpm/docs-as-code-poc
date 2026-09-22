@@ -9,6 +9,10 @@ const config = {
 
   onBrokenLinks: 'warn',
 
+  markdown: {
+    format: 'md'
+  },
+
   favicon: 'img/favicon.ico',
 
   organizationName: 'client',

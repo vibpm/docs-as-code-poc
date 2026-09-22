@@ -52,6 +52,10 @@
           },
           "block_ref": {
             "type": "string"
+          },
+          "file_ref": {
+            "type": "string",
+            "pattern": "^content/"
           }
         }
       }

@@ -6,3 +6,6 @@ generated/impact-report.json
 .env
 .env.*
 !.env.example
+# FPF corpus is cloned/junctioned locally; clone from https://github.com/ailev/FPF
+vendor/FPF/
+tmp_*.txt

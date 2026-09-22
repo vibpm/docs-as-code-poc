@@ -9,7 +9,9 @@
     "graph": "node scripts/build-dependency-index.mjs",
     "impact": "node scripts/impact-analysis.mjs",
     "build": "npm run validate && npm run graph && npm run assemble && docusaurus build",
-    "serve": "docusaurus serve --host 0.0.0.0",
+    "serve": "docusaurus serve --host 127.0.0.1 --port 3000",
+    "serve:static": "python -m http.server 3000 --directory build --bind 127.0.0.1",
+    "cms": "npx --yes decap-server",
     "quality": "npm run validate && npm run graph"
   },
   "dependencies": {
