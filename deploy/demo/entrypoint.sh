@@ -1,8 +1,16 @@
 #!/bin/sh
 set -eu
 
-SITE_URL="${SITE_URL:-http://localhost:8080}"
+PORT="${PORT:-8080}"
+SITE_URL="${SITE_URL:-${RENDER_EXTERNAL_URL:-http://localhost:${PORT}}}"
 BRANCH="${CONTENT_BRANCH:-master}"
+DEMO_USER="${DEMO_USER:-demo}"
+DEMO_PASSWORD="${DEMO_PASSWORD:-demo2026}"
+
+# Runtime credentials (Render env vars)
+htpasswd -cb /etc/nginx/.htpasswd "$DEMO_USER" "$DEMO_PASSWORD"
+
+sed "s/REPLACE_PORT/${PORT}/g" /etc/nginx/conf.d/demo.conf.template > /etc/nginx/conf.d/demo.conf
 
 mkdir -p /app/content/blocks /app/content/documents /app/static/admin /app/build/admin /app/generated /app/static/uploads
 
@@ -69,7 +77,7 @@ content_hash() {
 }
 
 write_cms_config
-echo "[demo] SITE_URL=${SITE_URL}"
+echo "[demo] PORT=${PORT} SITE_URL=${SITE_URL}"
 
 cd /app
 (

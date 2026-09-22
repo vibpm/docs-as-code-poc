@@ -1,0 +1,22 @@
+# Render Blueprint — colleague demo (portal + CMS + auto-rebuild)
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: docs-as-code-poc
+    runtime: docker
+    plan: free
+    region: frankfurt
+    branch: main
+    dockerfilePath: ./deploy/demo/Dockerfile.demo
+    dockerContext: .
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: CONTENT_AS_OF
+        value: "2026-09-22"
+      - key: CONTENT_BRANCH
+        value: master
+      - key: DEMO_USER
+        value: demo
+      - key: DEMO_PASSWORD
+        value: demo2026
