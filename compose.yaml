@@ -1,0 +1,31 @@
+services:
+
+  docs:
+    build:
+      context: .
+      args:
+        CONTENT_AS_OF: ${CONTENT_AS_OF:-}
+        CI_COMMIT_SHA: ${CI_COMMIT_SHA:-local}
+
+    image: docs-as-code-poc:${IMAGE_TAG:-local}
+
+    restart: unless-stopped
+
+    read_only: true
+
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+
+    ports:
+      - "${HTTP_PORT:-8080}:8080"
+
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -qO-
+        - http://localhost:8080/health
+      interval: 30s
+      timeout: 3s
+      retries: 3

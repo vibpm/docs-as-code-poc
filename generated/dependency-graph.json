@@ -1,0 +1,51 @@
+{
+  "blocks": {
+    "reg.approval-threshold": {
+      "usedBy": [
+        "accounting.invoice-procedure",
+        "finance.expense-policy"
+      ]
+    },
+    "reg.invoice-retention": {
+      "usedBy": [
+        "accounting.invoice-procedure",
+        "legal.records-policy"
+      ]
+    },
+    "reg.segregation-of-duties": {
+      "usedBy": [
+        "accounting.invoice-procedure",
+        "finance.expense-policy"
+      ]
+    },
+    "reg.personal-data-retention": {
+      "usedBy": [
+        "legal.records-policy"
+      ]
+    }
+  },
+  "documents": {
+    "accounting.invoice-procedure": {
+      "title": "Процедура обработки входящих счетов",
+      "blocks": [
+        "reg.approval-threshold",
+        "reg.invoice-retention",
+        "reg.segregation-of-duties"
+      ]
+    },
+    "finance.expense-policy": {
+      "title": "Политика учета и согласования расходов",
+      "blocks": [
+        "reg.approval-threshold",
+        "reg.segregation-of-duties"
+      ]
+    },
+    "legal.records-policy": {
+      "title": "Политика хранения документов",
+      "blocks": [
+        "reg.invoice-retention",
+        "reg.personal-data-retention"
+      ]
+    }
+  }
+}

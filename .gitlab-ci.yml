@@ -1,0 +1,203 @@
+stages:
+  - validate
+  - quality
+  - build
+  - package
+  - preview
+  - deploy
+
+variables:
+  IMAGE_SHA:
+    $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - .npm/
+
+default:
+  image: node:22-alpine
+
+before_script:
+  - npm ci --cache .npm --prefer-offline
+
+
+validate:
+  stage: validate
+  script:
+    - npm run validate
+    - npm run graph
+  artifacts:
+    when: always
+    paths:
+      - generated/dependency-graph.json
+
+
+assemble:
+  stage: validate
+  script:
+    - npm run assemble
+  artifacts:
+    paths:
+      - generated/docs/
+
+
+vale:
+  stage: quality
+  image:
+    name: jdkato/vale:latest
+    entrypoint: [""]
+  before_script: []
+  script:
+    - vale content
+
+
+links:
+  stage: quality
+  image:
+    name: lycheeverse/lychee:latest
+    entrypoint: [""]
+  before_script: []
+  script:
+    - >
+      lychee
+      --verbose
+      --no-progress
+      "content/**/*.mdx"
+
+
+docusaurus-build:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    expire_in: 7 days
+    paths:
+      - build/
+      - generated/
+
+
+container:
+  stage: package
+
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+
+  before_script: []
+
+  script:
+    - >
+      /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+      --destination "${IMAGE_SHA}"
+      --build-arg CI_COMMIT_SHA="${CI_COMMIT_SHA}"
+
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
+
+
+impact:
+  stage: build
+  script:
+    - npm run graph
+    - |
+      CHANGED_FILES="$(git diff --name-only "${CI_MERGE_REQUEST_DIFF_BASE_SHA:-HEAD~1}" HEAD || true)"
+
+      CHANGED_BLOCKS="$(
+        echo "$CHANGED_FILES" |
+        grep '^content/blocks/' |
+        sed 's#content/blocks/##' |
+        sed 's/\.[^.]*$//' |
+        sed -E 's/\.(20[0-9]{2}|current)$//' |
+        sort -u |
+        paste -sd, -
+      )"
+
+      export CHANGED_BLOCKS
+
+      node scripts/impact-analysis.mjs
+
+  artifacts:
+    when: always
+    paths:
+      - generated/impact-report.json
+
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+
+preview:
+  stage: preview
+
+  image: alpine:3.20
+
+  before_script:
+    - apk add --no-cache openssh-client
+
+  script:
+    - |
+      echo "Deploy preview image:"
+      echo "${IMAGE_SHA}"
+      echo
+      echo "Target environment:"
+      echo "review/${CI_COMMIT_REF_SLUG}"
+      echo
+      echo "Implement deployment adapter here:"
+      echo "Docker host / Kubernetes / Nomad / OpenShift"
+
+  environment:
+    name: review/$CI_COMMIT_REF_SLUG
+    url: https://${CI_COMMIT_REF_SLUG}.preview.example.com
+    on_stop: stop-preview
+
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+
+stop-preview:
+  stage: preview
+
+  image: alpine:3.20
+
+  before_script: []
+
+  script:
+    - echo "Destroy preview environment ${CI_COMMIT_REF_SLUG}"
+
+  environment:
+    name: review/$CI_COMMIT_REF_SLUG
+    action: stop
+
+  when: manual
+
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+
+production:
+  stage: deploy
+
+  image: alpine:3.20
+
+  before_script:
+    - apk add --no-cache openssh-client
+
+  script:
+    - |
+      echo "Deploy immutable image:"
+      echo "${IMAGE_SHA}"
+      echo
+      echo "Production deployment adapter goes here."
+
+  environment:
+    name: production
+    url: https://docs.example.com
+
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+  when: manual

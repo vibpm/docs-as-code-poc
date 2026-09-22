@@ -1,0 +1,33 @@
+{
+  "name": "docs-as-code-poc",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "docusaurus start --host 0.0.0.0",
+    "assemble": "node scripts/assemble.mjs",
+    "validate": "node scripts/validate-content.mjs",
+    "graph": "node scripts/build-dependency-index.mjs",
+    "impact": "node scripts/impact-analysis.mjs",
+    "build": "npm run validate && npm run graph && npm run assemble && docusaurus build",
+    "serve": "docusaurus serve --host 0.0.0.0",
+    "quality": "npm run validate && npm run graph"
+  },
+  "dependencies": {
+    "@docusaurus/core": "^3.8.1",
+    "@docusaurus/preset-classic": "^3.8.1",
+    "@mdx-js/react": "^3.1.0",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "^3.8.1",
+    "@docusaurus/types": "^3.8.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

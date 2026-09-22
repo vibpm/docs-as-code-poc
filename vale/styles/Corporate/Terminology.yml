@@ -1,0 +1,8 @@
+extends: substitution
+message: "Используйте '%s' вместо '%s'."
+level: error
+ignorecase: true
+swap:
+  Заказчик: Клиент
+  аппрувер: Утверждающий
+  дата начала действия: дата вступления в силу

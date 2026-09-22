@@ -1,0 +1,12 @@
+terms:
+  - preferred: Клиент
+    rejected:
+      - Заказчик
+
+  - preferred: Утверждающий
+    rejected:
+      - аппрувер
+
+  - preferred: дата вступления в силу
+    rejected:
+      - дата начала действия

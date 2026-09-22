@@ -1,0 +1,165 @@
+backend:
+  name: gitlab
+
+  # Replace during deployment:
+  repo: CLIENT_GROUP/docs-as-code-poc
+  branch: main
+
+  # Self-hosted GitLab:
+  api_root: https://gitlab.example.com/api/v4
+  base_url: https://gitlab.example.com
+  auth_endpoint: oauth/authorize
+
+  # Public OAuth Application ID.
+  # Do NOT put OAuth client secret here.
+  app_id: REPLACE_WITH_GITLAB_OAUTH_APPLICATION_ID
+
+publish_mode: editorial_workflow
+
+media_folder: static/uploads
+public_folder: /uploads
+
+collections:
+
+  - name: blocks
+    label: Общие нормативные блоки
+    folder: content/blocks
+    create: true
+    extension: mdx
+    format: frontmatter
+
+    identifier_field: id
+
+    fields:
+      - label: Stable ID
+        name: id
+        widget: string
+
+      - label: Series ID
+        name: series_id
+        widget: string
+
+      - label: Название
+        name: title
+        widget: string
+
+      - label: Content Type
+        name: content_type
+        widget: hidden
+        default: regulatory_block
+
+      - label: Jurisdiction
+        name: jurisdiction
+        widget: string
+
+      - label: Owner
+        name: owner
+        widget: string
+
+      - label: Approver
+        name: approver
+        widget: string
+
+      - label: Lifecycle
+        name: lifecycle
+        widget: select
+        options:
+          - draft
+          - approved
+          - effective
+          - retired
+
+      - label: Valid From
+        name: valid_from
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+
+      - label: Valid To
+        name: valid_to
+        widget: datetime
+        required: false
+        date_format: YYYY-MM-DD
+        time_format: false
+
+      - label: Topics
+        name: topics
+        widget: list
+
+      - label: Текст
+        name: body
+        widget: markdown
+
+  - name: documents
+    label: Документы
+    folder: content/documents
+    create: true
+    extension: yml
+    format: yaml
+
+    identifier_field: id
+
+    fields:
+      - label: Stable ID
+        name: id
+        widget: string
+
+      - label: Название
+        name: title
+        widget: string
+
+      - label: Content Type
+        name: content_type
+        widget: hidden
+        default: assembled_document
+
+      - label: Owner
+        name: owner
+        widget: string
+
+      - label: Approver
+        name: approver
+        widget: string
+
+      - label: Lifecycle
+        name: lifecycle
+        widget: select
+        options:
+          - draft
+          - approved
+          - effective
+          - retired
+
+      - label: Valid From
+        name: valid_from
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+
+      - label: Sections
+        name: sections
+        widget: list
+
+        fields:
+          - label: Heading
+            name: heading
+            widget: string
+
+          - label: Local text
+            name: body
+            widget: markdown
+            required: false
+
+          - label: Shared block
+            name: block_ref
+            widget: relation
+            required: false
+            collection: blocks
+            search_fields:
+              - title
+              - id
+              - series_id
+            value_field: series_id
+            display_fields:
+              - title
+              - series_id

@@ -1,0 +1,8 @@
+node_modules/
+build/
+.docusaurus/
+generated/docs/
+generated/impact-report.json
+.env
+.env.*
+!.env.example

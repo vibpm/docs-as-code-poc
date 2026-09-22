@@ -1,0 +1,22 @@
+id: accounting.invoice-procedure
+title: Процедура обработки входящих счетов
+content_type: assembled_document
+owner: accounting-policy-owner
+approver: chief-accountant
+lifecycle: effective
+valid_from: "2026-01-01"
+
+sections:
+  - heading: Назначение
+    body: >
+      Процедура определяет порядок регистрации,
+      согласования и хранения входящих счетов.
+
+  - heading: Согласование
+    block_ref: reg.approval-threshold
+
+  - heading: Хранение
+    block_ref: reg.invoice-retention
+
+  - heading: Контроль
+    block_ref: reg.segregation-of-duties

@@ -1,0 +1,19 @@
+id: legal.records-policy
+title: Политика хранения документов
+content_type: assembled_document
+owner: legal-policy-owner
+approver: legal-owner
+lifecycle: effective
+valid_from: "2026-01-01"
+
+sections:
+  - heading: Общие положения
+    body: >
+      Политика устанавливает требования к хранению
+      корпоративных документов и связанных данных.
+
+  - heading: Бухгалтерские документы
+    block_ref: reg.invoice-retention
+
+  - heading: Персональные данные
+    block_ref: reg.personal-data-retention

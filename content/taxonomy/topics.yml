@@ -1,0 +1,18 @@
+topics:
+  - id: expenses
+    title: Расходы
+
+  - id: approvals
+    title: Согласование
+
+  - id: accounting
+    title: Бухгалтерский учет
+
+  - id: retention
+    title: Хранение
+
+  - id: privacy
+    title: Персональные данные
+
+  - id: controls
+    title: Контроли

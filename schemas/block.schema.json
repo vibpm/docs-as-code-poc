@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "id",
+    "series_id",
+    "title",
+    "content_type",
+    "owner",
+    "lifecycle",
+    "valid_from"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9._-]+$"
+    },
+    "series_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "content_type": {
+      "const": "regulatory_block"
+    },
+    "jurisdiction": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "approver": {
+      "type": "string"
+    },
+    "lifecycle": {
+      "enum": [
+        "draft",
+        "approved",
+        "effective",
+        "retired"
+      ]
+    },
+    "valid_from": {
+      "type": "string"
+    },
+    "valid_to": {
+      "type": ["string", "null"]
+    },
+    "supersedes": {
+      "type": ["string", "null"]
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}
