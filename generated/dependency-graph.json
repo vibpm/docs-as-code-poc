@@ -1,95 +1,129 @@
 {
   "blocks": {
-    "reg.dismissal.day-not-on-leave": {
+    "reg.shared.poyavlenie-na-rabote-v-sostoyanii-alkogo": {
       "usedBy": [
-        "hr.dismissal-guide",
-        "hr.dismissal.closing-procedure"
+        "hr.disciplinary-algorithm",
+        "hr.disciplinary"
       ]
     },
-    "reg.dismissal.final-settlement": {
+    "reg.shared.raspitie-spirtnyh-napitkov-upotreblenie-": {
       "usedBy": [
-        "hr.dismissal-guide",
-        "hr.dismissal.closing-procedure"
+        "hr.disciplinary-algorithm",
+        "hr.disciplinary"
       ]
     },
-    "reg.dismissal.workbook-issue": {
+    "reg.shared.disciplinarnaya-otvetstvennost-nastupaet": {
       "usedBy": [
-        "hr.dismissal-guide",
-        "hr.dismissal.closing-procedure"
+        "hr.disciplinary",
+        "hr.drivers-cars"
       ]
     },
-    "reg.dismissal.workbook-wording": {
+    "reg.shared.dlya-provedeniya-proverki-nanimatelyu-sl": {
       "usedBy": [
-        "hr.dismissal-guide",
-        "hr.dismissal.closing-procedure"
+        "hr.disciplinary"
       ]
     },
-    "reg.dismissal.personal-file-order": {
+    "reg.shared.rezultaty-proverki-dopuschennyh-rabotnik": {
       "usedBy": [
-        "hr.dismissal-guide",
-        "hr.dismissal.closing-procedure"
+        "hr.disciplinary"
       ]
     },
-    "reg.dismissal.personal-card": {
+    "reg.shared.akty-sluzhebnye-zapiski-o-provedenii-pro": {
       "usedBy": [
-        "hr.dismissal-guide",
-        "hr.dismissal.closing-procedure"
+        "hr.disciplinary"
       ]
     },
-    "reg.dismissal.military-notice": {
+    "reg.shared.pri-opredelenii-sroka-v-techenie-kotorog": {
       "usedBy": [
-        "hr.dismissal-guide",
-        "hr.dismissal.closing-procedure"
+        "hr.disciplinary"
       ]
     },
-    "reg.dismissal.settlement-delay": {
+    "reg.shared.rabotnik-ne-oznakomlennyy-s-prikazom-sch": {
       "usedBy": [
-        "hr.dismissal-guide",
-        "hr.dismissal.closing-procedure"
+        "hr.disciplinary"
       ]
     },
-    "reg.dismissal.union-notice": {
+    "reg.shared.familiyu-imya-otchestvo-rabotnika-obnaru": {
       "usedBy": [
-        "hr.dismissal-guide",
-        "hr.dismissal.closing-procedure"
+        "hr.disciplinary",
+        "hr.suspension"
       ]
     },
-    "reg.dismissal.written-explanation": {
+    "reg.shared.organizaciya-samostoyatelno-razrabatyvae": {
       "usedBy": [
-        "hr.dismissal-guide",
-        "hr.dismissal.closing-procedure"
+        "hr.disciplinary"
+      ]
+    },
+    "reg.shared.prikaz-o-nalozhenii-disciplinarnogo-vzys": {
+      "usedBy": [
+        "hr.disciplinary"
+      ]
+    },
+    "reg.shared.takim-obrazom-srok-v-techenie-kotorogo": {
+      "usedBy": [
+        "hr.disciplinary"
+      ]
+    },
+    "reg.shared.kopiya-prikaza-dolzhna-vklyuchatsya-v-so": {
+      "usedBy": [
+        "hr.disciplinary"
+      ]
+    },
+    "reg.shared.esli-v-den-uvolneniya-vydat-trudovuyu": {
+      "usedBy": [
+        "hr.disciplinary"
+      ]
+    },
+    "reg.shared.v-tabele-ispolzovaniya-rabochego-vremeni": {
+      "usedBy": [
+        "hr.drivers-cars",
+        "hr.suspension"
       ]
     }
   },
   "documents": {
-    "hr.dismissal-guide": {
-      "title": "Путеводитель по кадровым вопросам. Увольнение (ООО «ЮрСпектр»)",
+    "hr.disciplinary-algorithm": {
+      "title": "Алгоритм. Привлечение работника к дисциплинарной ответственности (ООО «ЮрСпектр») ",
       "blocks": [
-        "reg.dismissal.day-not-on-leave",
-        "reg.dismissal.final-settlement",
-        "reg.dismissal.workbook-issue",
-        "reg.dismissal.workbook-wording",
-        "reg.dismissal.personal-file-order",
-        "reg.dismissal.personal-card",
-        "reg.dismissal.military-notice",
-        "reg.dismissal.settlement-delay",
-        "reg.dismissal.union-notice",
-        "reg.dismissal.written-explanation"
+        "reg.shared.poyavlenie-na-rabote-v-sostoyanii-alkogo",
+        "reg.shared.raspitie-spirtnyh-napitkov-upotreblenie-"
       ]
     },
-    "hr.dismissal.closing-procedure": {
-      "title": "Общая процедура оформления увольнения (сквозные требования)",
+    "hr.disciplinary": {
+      "title": "Путеводитель по кадровым вопросам. Дисциплинарная ответственность (ООО «ЮрСпектр») ",
       "blocks": [
-        "reg.dismissal.day-not-on-leave",
-        "reg.dismissal.final-settlement",
-        "reg.dismissal.workbook-issue",
-        "reg.dismissal.workbook-wording",
-        "reg.dismissal.personal-file-order",
-        "reg.dismissal.personal-card",
-        "reg.dismissal.military-notice",
-        "reg.dismissal.settlement-delay",
-        "reg.dismissal.union-notice",
-        "reg.dismissal.written-explanation"
+        "reg.shared.disciplinarnaya-otvetstvennost-nastupaet",
+        "reg.shared.poyavlenie-na-rabote-v-sostoyanii-alkogo",
+        "reg.shared.raspitie-spirtnyh-napitkov-upotreblenie-",
+        "reg.shared.dlya-provedeniya-proverki-nanimatelyu-sl",
+        "reg.shared.rezultaty-proverki-dopuschennyh-rabotnik",
+        "reg.shared.akty-sluzhebnye-zapiski-o-provedenii-pro",
+        "reg.shared.pri-opredelenii-sroka-v-techenie-kotorog",
+        "reg.shared.rabotnik-ne-oznakomlennyy-s-prikazom-sch",
+        "reg.shared.familiyu-imya-otchestvo-rabotnika-obnaru",
+        "reg.shared.organizaciya-samostoyatelno-razrabatyvae",
+        "reg.shared.prikaz-o-nalozhenii-disciplinarnogo-vzys",
+        "reg.shared.takim-obrazom-srok-v-techenie-kotorogo",
+        "reg.shared.kopiya-prikaza-dolzhna-vklyuchatsya-v-so",
+        "reg.shared.esli-v-den-uvolneniya-vydat-trudovuyu"
+      ]
+    },
+    "hr.drivers-cars": {
+      "title": "Путеводитель по кадровым вопросам. Водители легковых автомобилей (ООО «ЮрСпектр») ",
+      "blocks": [
+        "reg.shared.disciplinarnaya-otvetstvennost-nastupaet",
+        "reg.shared.v-tabele-ispolzovaniya-rabochego-vremeni"
+      ]
+    },
+    "hr.labor-protection": {
+      "title": "Путеводитель по кадровым вопросам. Охрана труда в организации (ООО «ЮрСпектр») ",
+      "blocks": []
+    },
+    "hr.suspension": {
+      "title": "Путеводитель по кадровым вопросам. Отстранение от работы (ООО «ЮрСпектр») ",
+      "blocks": [
+        "reg.shared.v-tabele-ispolzovaniya-rabochego-vremeni",
+        "reg.shared.familiyu-imya-otchestvo-rabotnika-obnaru"
       ]
     }
   }

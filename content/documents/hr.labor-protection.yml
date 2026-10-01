@@ -1,0 +1,18 @@
+id: hr.labor-protection
+title: "Путеводитель по кадровым вопросам. Охрана труда в организации (ООО «ЮрСпектр»)"
+content_type: assembled_document
+owner: hr-policy-owner
+approver: legal-owner
+lifecycle: effective
+valid_from: "2026-09-01"
+topics: ['labor-protection', 'procedure']
+
+sections:
+  - heading: О документе
+    body: >
+      Материал ООО «ЮрСпектр», актуально на 01.09.2026.
+      Ниже — полный текст. Общие нормативные блоки (если есть)
+      выделяются при пересборке и правятся отдельно в CMS.
+
+  - heading: Полный текст
+    file_ref: content/sources/labor-protection/full.md

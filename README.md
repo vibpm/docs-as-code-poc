@@ -105,9 +105,9 @@ Editable demo stack (Basic Auth + CMS + auto-rebuild):
 
 Connected corpus: [ailev/FPF](https://github.com/ailev/FPF) → local `vendor/FPF/` (clone or junction).
 
-Project working publications for the Dismissal Guide:
+Project working publications (editorial time/errors; corpus 2026-10):
 
-- CuePack (`A.16.1`): `fpf/cuepacks/hr.dismissal-guide.pre-articulation.cuepack.md`
-- ProblemCard Thin (`C.22.2`): `fpf/problem-cards/hr.dismissal-ssot.problem-card.md`
+- CuePack (`A.16.1`): `fpf/cuepacks/hr.corpus-repeat-update.pre-articulation.cuepack.md`
+- ProblemCard Thin (`C.22.2`): `fpf/problem-cards/editorial.repeat-norm-update.problem-card.md`
 
-How to use: `fpf/README.md` and `vendor/FPF/USING-FPF.md`.
+How to use: `fpf/README.md` and `vendor/FPF/USING-FPF.md`. Colleague handoff: `ДЛЯ_КОЛЛЕГ.md`.

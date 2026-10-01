@@ -27,10 +27,10 @@ git clone --depth 1 https://github.com/ailev/FPF.git vendor/FPF
 
 | Артефакт | Паттерн FPF | Файл |
 |---|---|---|
-| Pre-articulation CuePack | `A.16.1` `U.PreArticulationCuePack` | [`cuepacks/hr.dismissal-guide.pre-articulation.cuepack.md`](cuepacks/hr.dismissal-guide.pre-articulation.cuepack.md) |
-| ProblemCard (Thin) | `C.22.2` | [`problem-cards/hr.dismissal-ssot.problem-card.md`](problem-cards/hr.dismissal-ssot.problem-card.md) |
+| Pre-articulation CuePack | `A.16.1` `U.PreArticulationCuePack` | [`cuepacks/hr.corpus-repeat-update.pre-articulation.cuepack.md`](cuepacks/hr.corpus-repeat-update.pre-articulation.cuepack.md) |
+| ProblemCard (Thin) | `C.22.2` | [`problem-cards/editorial.repeat-norm-update.problem-card.md`](problem-cards/editorial.repeat-norm-update.problem-card.md) |
 
-Оба пересмотрены **от боли редакции** (время на правку повторов + риск ошибок), не «от продукта». Путеводитель «Увольнение» — рабочий пример; PoC/портал — не EntityOfConcern.
+Оба ведут **от боли редакции** (время на правку повторов + риск ошибок), не «от продукта». Иллюстрация: корпус из 5 материалов ЮрСпектр (дисциплинарка + алгоритм и др.); PoC/портал — не EntityOfConcern.
 
 ## Как использовать с агентом
 
